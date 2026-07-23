@@ -1,7 +1,9 @@
 <script lang="ts">
-	import { type TestState, use } from '../context';
+    import { useEagleEye } from '@webkrafters/svelte-eagleeye';
+	
+	import { CTX_DESC, type TestState } from '$lib/context';
 
-	const ctx = use();
+	const ctx = useEagleEye<TestState>( CTX_DESC );
 
 	const { setState } = ctx.stream( 'EDITOR' );
 	

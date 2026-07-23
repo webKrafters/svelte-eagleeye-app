@@ -1,7 +1,9 @@
 <script lang="ts">
-	import { onDestroy } from 'svelte';
+	import { onDestroy, untrack } from 'svelte';
 
-	import { provide, type TestState } from '$lib/context';
+	import { createEagleEye } from '@webkrafters/svelte-eagleeye';
+
+	import { CTX_DESC, type TestState } from '$lib/context';
 
 	import favicon from '$lib/assets/favicon.svg';
 	import wkLogo from '$lib/assets/wklogo-outline.png';
@@ -10,7 +12,10 @@
 
 	const { data, children } = $props();
 
-	const ctx = provide( data.defaultState );
+	const ctx = createEagleEye({
+		CTX_DESC,
+		value: untrack( () => data.defaultState )
+	});
 
 	const commit = ( type : unknown ) => ctx.store.setState({ type } as TestState );
 

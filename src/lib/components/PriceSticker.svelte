@@ -1,7 +1,9 @@
 <script lang="ts">
-	import { use } from '$lib/context';
+    import { useEagleEye } from '@webkrafters/svelte-eagleeye';
 
-	const ctx = use();
+	import { CTX_DESC, type TestState } from '$lib/context';
+
+	const ctx = useEagleEye<TestState>( CTX_DESC );
 
 	const { data } = ctx.stream( 'PRODUCT_STICKER', { p: 'price' } as const );
 	

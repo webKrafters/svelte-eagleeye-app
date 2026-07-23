@@ -1,8 +1,11 @@
 <script lang="ts">
-	import { use } from '$lib/context';
+    import { useEagleEye } from '@webkrafters/svelte-eagleeye';
+
+	import { CTX_DESC, type TestState } from '$lib/context';
+	
 	import CapitalizedDisplay from '$lib/components/CapitalizedDisplay.svelte';
 	
-	const ctx = use();
+	const ctx = useEagleEye<TestState>( CTX_DESC );
 	
 	const { data } = ctx.stream( 'PROD_DESC', {
 		c: 'color',

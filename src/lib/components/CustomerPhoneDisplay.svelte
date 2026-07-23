@@ -1,8 +1,9 @@
-<script lang="ts">;
+<script lang="ts">
+    import { useEagleEye } from '@webkrafters/svelte-eagleeye';
 
-	import { use } from '$lib/context';
+	import { CTX_DESC, type TestState } from '$lib/context';
 
-	const ctx = use();
+	const ctx = useEagleEye<TestState>( CTX_DESC );
 
 	const { data } = ctx.stream( 'CUST_PHONE', { phone: 'customer.phone' } as const );
 

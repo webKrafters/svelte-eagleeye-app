@@ -40,6 +40,7 @@
 		"@webkrafters/eagleeye": "^1.0.9",
 		"@webkrafters/get-property": "^2.0.0",
 		"@webkrafters/path-dotize": "^0.0.2",
+		"@webkrafters/svelte-eagleeye": "^1.0.0-alpha.3",
 		"@webkrafters/timed-map": "^2.0.0",
 		"lodash.clonedeep": "^4.5.0",
 		"lodash.clonedeepwith": "^4.5.0",
