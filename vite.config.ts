@@ -16,11 +16,11 @@ export default defineConfig({
 			adapter: adapter()
 		})
 	],
-	ssr: {
-		noExternal: [
-			'@webkrafters/svelte-eagleeye'
-		] 
-	},
+	// ssr: {
+	// 	noExternal: [
+	// 		'@webkrafters/svelte-eagleeye'
+	// 	] 
+	// },
 	test: {
 		expect: { requireAssertions: true },
 		projects: [{

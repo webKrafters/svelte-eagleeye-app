@@ -19,8 +19,6 @@
 
 	const commit = ( type : unknown ) => ctx.store.setState({ type } as TestState );
 
-	commit( 'Calculator' );
-
   	const title = '@webkrafters/svelte-eagleeye demo';
 	const updateType = ( e : KeyboardEvent ) => commit( ( e.target as HTMLInputElement ).value );
   	const year = new Date().getFullYear();

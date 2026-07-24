@@ -1,3 +1,7 @@
 import { defaultState } from '$lib/context';
 
-export const load = async () => ({ defaultState: { ...defaultState } });
+const myState = { ...defaultState };
+myState.customer.name.first = 'Dart';
+myState.customer.name.last = 'Vader';
+myState.type = 'Wand Stopper';
+export const load = async () => ({ defaultState: myState });
