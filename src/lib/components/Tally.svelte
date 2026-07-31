@@ -1,15 +1,13 @@
 <script lang="ts">
 	import isEmpty from 'lodash.isempty';
 
-	import { useEagleEye } from '@webkrafters/svelte-eagleeye';
-	
-    import { CTX_DESC, type TestState } from '$lib/context';
+	import { getDemoContext } from '$lib/context';
 
 	import CapitalizedDisplay from '$lib/components/CapitalizedDisplay.svelte';
 	import CustomerPhoneDisplay from '$lib/components/CustomerPhoneDisplay.svelte';
 	import Reset from '$lib/components/Reset.svelte';
 
-	const ctx = useEagleEye<TestState>( CTX_DESC );
+	const ctx = getDemoContext();
 	
 	const { data } = ctx.stream( 'TALLY', {
 		color: 'color',

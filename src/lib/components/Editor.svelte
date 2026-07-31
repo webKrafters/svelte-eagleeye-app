@@ -1,11 +1,7 @@
 <script lang="ts">
-    import { useEagleEye } from '@webkrafters/svelte-eagleeye';
-	
-	import { CTX_DESC, type TestState } from '$lib/context';
+   import { getDemoContext, type TestState } from '$lib/context';
 
-	const ctx = useEagleEye<TestState>( CTX_DESC );
-
-	const { setState } = ctx.stream( 'EDITOR' );
+	const { setState } = getDemoContext().stream( 'EDITOR' );
 	
 	let color = $state( '' );
 	let first = $state( '' );

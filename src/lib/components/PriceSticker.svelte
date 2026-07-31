@@ -1,11 +1,7 @@
 <script lang="ts">
-    import { useEagleEye } from '@webkrafters/svelte-eagleeye';
+    import { getDemoContext } from '$lib/context';
 
-	import { CTX_DESC, type TestState } from '$lib/context';
-
-	const ctx = useEagleEye<TestState>( CTX_DESC );
-
-	const { data } = ctx.stream( 'PRODUCT_STICKER', { p: 'price' } as const );
+	const { data } = getDemoContext().stream( 'PRODUCT_STICKER', { p: 'price' } as const );
 	
 	const pOutput = $derived( data.p.toFixed( 2 ) );
 

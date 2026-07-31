@@ -1,16 +1,13 @@
 <script lang="ts">
-    import { useEagleEye } from '@webkrafters/svelte-eagleeye';
-
-	import { CTX_DESC, type TestState } from '$lib/context';
+    import { getDemoContext, type TestState } from '$lib/context';
 
 	import Editor from './Editor.svelte';
 	import Tally from './Tally.svelte';
 	import ProductDescription from './ProductDescription.svelte';
 	import PriceSticker from './PriceSticker.svelte';
+    import Layout from '../../routes/+layout.svelte';
 
-	const ctx = useEagleEye<TestState>( CTX_DESC );
-
-	const { data, setState } = ctx.stream( 'PRODUCT', { price: 'price' } as const );
+	const { data, setState } = getDemoContext().stream( 'PRODUCT', { price: 'price' } );
 
 	const overridePricing = (( e : KeyboardEvent ) => {
 		setState({ price: +( e.target as HTMLInputElement ).value } as unknown as TestState );

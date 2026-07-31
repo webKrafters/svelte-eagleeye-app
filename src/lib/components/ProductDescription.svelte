@@ -1,13 +1,9 @@
 <script lang="ts">
-    import { useEagleEye } from '@webkrafters/svelte-eagleeye';
-
-	import { CTX_DESC, type TestState } from '$lib/context';
+   	import { getDemoContext } from '$lib/context';
 	
 	import CapitalizedDisplay from '$lib/components/CapitalizedDisplay.svelte';
 	
-	const ctx = useEagleEye<TestState>( CTX_DESC );
-	
-	const { data } = ctx.stream( 'PROD_DESC', {
+	const { data } = getDemoContext().stream( 'PROD_DESC', {
 		c: 'color',
 		t: 'type'
 	});

@@ -1,9 +1,8 @@
 <script lang="ts">
-	import { onDestroy, untrack } from 'svelte';
 
-	import { createEagleEye } from '@webkrafters/svelte-eagleeye';
+	import { untrack } from 'svelte';
 
-	import { CTX_DESC, type TestState } from '$lib/context';
+	import { provideDemoContext, type TestState } from '$lib/context';
 
 	import favicon from '$lib/assets/favicon.svg';
 	import wkLogo from '$lib/assets/wklogo-outline.png';
@@ -12,18 +11,14 @@
 
 	const { data, children } = $props();
 
-	const ctx = createEagleEye({
-		CTX_DESC,
-		value: untrack( () => data.defaultState )
-	});
+	const { demoCtxValue, requestToken } = untrack( () => data );
+	const ctx = provideDemoContext( demoCtxValue, requestToken );
 
-	const commit = ( type : unknown ) => ctx.store.setState({ type } as TestState );
+	const commit = ( type : string ) => ctx.store.setState({ type } as TestState );
 
   	const title = '@webkrafters/svelte-eagleeye demo';
 	const updateType = ( e : KeyboardEvent ) => commit( ( e.target as HTMLInputElement ).value );
   	const year = new Date().getFullYear();
-
-  	onDestroy(() => ctx.dispose());
 </script>
 
 <svelte:head>
@@ -44,19 +39,19 @@
 				</a>
 			</p>
 		</h1>
-			<main>
-				<h1>Demo</h1>
-				<h2>A contrived product app.</h2>
-				<nav>
-					<a href="/">Home</a>
-					<a href="/about">Product</a>
-				</nav>
-				<div style="margin-bottom: 10px">
-					<label>Type: <input onkeyup={ updateType } placeholder="override product type here..." /></label>
-				</div>
-				{@render children()}
-			</main>
-		</div>
+		<main>
+			<h1>Demo</h1>
+			<h2>A contrived product app.</h2>
+			<nav>
+				<a href="/">Home</a>
+				<a href="/about">Product</a>
+			</nav>
+			<div style="margin-bottom: 10px">
+				<label>Type: <input onkeyup={ updateType } placeholder="override product type here..." /></label>
+			</div>
+			{@render children()}
+		</main>
+	</div>
 	<footer>
 		<span>&copy;2026</span>
 		{ year > 2026 ? `-${ year } ` : ' ' }

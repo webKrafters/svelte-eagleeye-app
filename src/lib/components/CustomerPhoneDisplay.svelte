@@ -1,11 +1,8 @@
 <script lang="ts">
-    import { useEagleEye } from '@webkrafters/svelte-eagleeye';
 
-	import { CTX_DESC, type TestState } from '$lib/context';
+    import { getDemoContext } from "$lib/context";
 
-	const ctx = useEagleEye<TestState>( CTX_DESC );
-
-	const { data } = ctx.stream( 'CUST_PHONE', { phone: 'customer.phone' } as const );
+	const { data } = getDemoContext().stream( 'CUST_PHONE', { phone: 'customer.phone' } as const );
 
 	const phone = $derived.by(() => {
 		let { phone: p } = data;

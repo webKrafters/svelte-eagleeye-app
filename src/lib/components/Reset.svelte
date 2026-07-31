@@ -1,11 +1,7 @@
 <script lang="ts">
-    import { useEagleEye } from '@webkrafters/svelte-eagleeye';
-	
-	import { CTX_DESC, FULL_STATE_SELECTOR, type TestState } from '$lib/context';
+    import { FULL_STATE_SELECTOR, getDemoContext } from '$lib/context';
 
-	const ctx = useEagleEye<TestState>( CTX_DESC );
-	
-	const { resetState } = ctx.stream( 'RESET' );
+	const { resetState } = getDemoContext().stream( 'RESET' );
 
 	const reset = () => resetState([ FULL_STATE_SELECTOR ]);
 
