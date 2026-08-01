@@ -1,7 +1,7 @@
 import type { Handle } from '@sveltejs/kit';
 
 import {
-	allDescriptorsIn,
+	allKeysIn,
 	FULL_STATE_SELECTOR,
 	type RequestToken
 } from '@webkrafters/svelte-eagleeye';
@@ -20,7 +20,7 @@ export const handle : Handle = async ({ event, resolve }) => {
 	);
 	console.log(
 		'ALL CONTEXT NAMES USED: ',
-		allDescriptorsIn( event.locals.requestToken )
+		allKeysIn( event.locals.requestToken )
 	);
 	return response;
 };

@@ -31,7 +31,7 @@ export function createDemoContext(
 	value = defaultState,
 	requestToken? : RequestToken
 ) {
-	return createEagleEye({ value, CTX_DESC, requestToken });
+	return createEagleEye({ key: CTX_DESC, requestToken, value });
 }
 
 /**
@@ -44,10 +44,10 @@ export function getDemoContext(){ return getContext<SvelteEagleEye<TestState>>( 
  * Compatible with the component init script environment only.
  * In non-component init script, use the `createDemoConext(...)` instead.
  */
-export function setDemoContext( context : SvelteEagleEye<TestState> ){ return setContext( CTX_DESC, context) };
+export function setDemoContext( context : SvelteEagleEye<TestState> ){ return setContext( CTX_DESC, context ) };
 
 export function useDemoContext( requestToken? : RequestToken ){
-	return useEagleEye({ CTX_DESC, requestToken }) as SvelteEagleEye<TestState>;
+	return useEagleEye({ key: CTX_DESC, requestToken }) as SvelteEagleEye<TestState>;
 }
 
 /**
