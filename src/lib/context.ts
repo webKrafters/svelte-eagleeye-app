@@ -5,6 +5,7 @@ import {
 	FULL_STATE_SELECTOR,
 	SvelteEagleEye,
 	useEagleEye,
+	type Prehooks,
 	type RequestToken
 } from '@webkrafters/svelte-eagleeye';
 
@@ -29,9 +30,10 @@ export const CTX_DESC = 'Demo';
 
 export function createDemoContext(
 	value = defaultState,
-	requestToken? : RequestToken
+	requestToken? : RequestToken,
+	prehooks? : Prehooks<TestState>
 ) {
-	return createEagleEye({ key: CTX_DESC, requestToken, value });
+	return createEagleEye({ key: CTX_DESC, prehooks, requestToken, value });
 }
 
 /**
@@ -56,11 +58,12 @@ export function useDemoContext( requestToken? : RequestToken ){
  */
 export function provideDemoContext (
 	value = defaultState,
-	requestToken? : RequestToken
+	requestToken? : RequestToken,
+	prehooks? : Prehooks<TestState>
 ) {
 	let ctx = getDemoContext();
 	if( !!ctx ) { return ctx }
-	ctx = createDemoContext( value, requestToken ).value;
+	ctx = createDemoContext( value, requestToken, prehooks ).value;
 	setDemoContext( ctx );
 	return ctx;
 }

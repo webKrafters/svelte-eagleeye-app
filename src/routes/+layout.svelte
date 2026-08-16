@@ -12,7 +12,16 @@
 	const { data, children } = $props();
 
 	const { demoCtxValue, requestToken } = untrack( () => data );
-	const ctx = provideDemoContext( demoCtxValue, requestToken );
+	const ctx = provideDemoContext( demoCtxValue, requestToken, {
+		resetState( ...args : Array<any> ) {
+			console.log( 'prehook says: resetting state with >>>> ', JSON.stringify( args ) );
+			return true;
+		},
+		setState( ...args : Array<any> ) {
+			console.log( 'prehook says: merging following into state >>>> ', JSON.stringify( args ) );
+			return true;
+		}
+	} );
 
 	const commit = ( type : string ) => ctx.store.setState({ type } as TestState );
 
