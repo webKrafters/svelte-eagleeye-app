@@ -39,7 +39,7 @@
 				</a>
 			</p>
 		</h1>
-		<main>
+		<main class="page-wrapper">
 			<h1>Demo</h1>
 			<h2>A contrived product app.</h2>
 			<nav>
