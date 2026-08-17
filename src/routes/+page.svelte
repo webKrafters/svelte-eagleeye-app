@@ -2,6 +2,4 @@
   import Product from '$lib/components/Product.svelte';
 </script>
 
-<main>
-	<Product />
-</main>
+<Product />

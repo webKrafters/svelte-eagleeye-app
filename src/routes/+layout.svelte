@@ -48,7 +48,7 @@
 				</a>
 			</p>
 		</h1>
-		<main class="page-wrapper">
+		<main>
 			<h1>Demo</h1>
 			<h2>A contrived product app.</h2>
 			<nav>
