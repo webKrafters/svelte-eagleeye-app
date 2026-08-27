@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { getDemoContext } from '$lib/context';
 
-  	import ProductDescription from '$lib/components/CustomerPhoneDisplay.svelte';
+  	import CustomerPhone from '$lib/components/CustomerPhoneDisplay.svelte';
+
  	import Reset from '$lib/components/Reset.svelte';
 
 	const { data } = getDemoContext().stream( 'ABOUT_PAGE', { type: 'type' } );
@@ -11,7 +12,7 @@
 
 <div class="about">
 	<h1>A bit about { type }</h1>
-	<ProductDescription />
+	<CustomerPhone />
 	<div style="margin-top: 2rem">
 		<Reset /> entirely from here!
 	</div>

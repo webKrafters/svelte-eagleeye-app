@@ -9,7 +9,7 @@ import {
 import { useDemoContext } from '$lib/context';
 
 export const handle : Handle = async ({ event, resolve }) => {
-  	event.locals.requestToken = { _id: crypto.randomUUID() } as RequestToken;
+ 	event.locals.requestToken = { _id: crypto.randomUUID() } as RequestToken;
   	const response = await resolve( event );
 	console.log(
 		JSON.stringify(
@@ -23,4 +23,4 @@ export const handle : Handle = async ({ event, resolve }) => {
 		allKeysIn( event.locals.requestToken )
 	);
 	return response;
-};
+}
